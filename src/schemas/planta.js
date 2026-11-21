@@ -35,9 +35,3 @@ export const plantaSchema = z
         error: "Un frutal no puede estar en interior",
         path: ["ubicacion"],
     });
-
-export const objetoApiSchema = z.object({
-    id: z.string(),
-    name: z.string(),
-    data: z.unknown(),
-});

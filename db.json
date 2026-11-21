@@ -1,0 +1,80 @@
+{
+  "plantas": [
+    {
+      "id": "1",
+      "nombre": "Tomatera cherry",
+      "tipo": "hortaliza",
+      "ubicacion": "terraza",
+      "fechaSiembra": "2026-04-12",
+      "ultimoRiego": "2026-11-19",
+      "riegoCadaDias": 2,
+      "notas": "Atarla al tutor cada semana."
+    },
+    {
+      "id": "2",
+      "nombre": "Albahaca",
+      "tipo": "aromática",
+      "ubicacion": "balcón",
+      "fechaSiembra": "2026-09-01",
+      "ultimoRiego": "2026-11-20",
+      "riegoCadaDias": 3
+    },
+    {
+      "id": "3",
+      "nombre": "Menta",
+      "tipo": "aromática",
+      "ubicacion": "interior",
+      "fechaSiembra": "2026-06-15",
+      "ultimoRiego": "2026-11-15",
+      "riegoCadaDias": 4,
+      "notas": "Le gusta el sustrato húmedo."
+    },
+    {
+      "id": "4",
+      "nombre": "Limonero",
+      "tipo": "frutal",
+      "ubicacion": "terraza",
+      "fechaSiembra": "2025-03-20",
+      "ultimoRiego": "2026-11-17",
+      "riegoCadaDias": 7
+    },
+    {
+      "id": "5",
+      "nombre": "Lavanda",
+      "tipo": "flor",
+      "ubicacion": "huerto",
+      "fechaSiembra": "2026-05-05",
+      "ultimoRiego": "2026-11-10",
+      "riegoCadaDias": 10
+    },
+    {
+      "id": "6",
+      "nombre": "Lechuga romana",
+      "tipo": "hortaliza",
+      "ubicacion": "huerto",
+      "fechaSiembra": "2026-10-20",
+      "ultimoRiego": "2026-11-20",
+      "riegoCadaDias": 2,
+      "notas": "Primera cosecha prevista a mediados de diciembre."
+    },
+    {
+      "id": "7",
+      "nombre": "Geranio rojo",
+      "tipo": "flor",
+      "ubicacion": "balcón",
+      "fechaSiembra": "2026-03-01",
+      "ultimoRiego": "2026-11-18",
+      "riegoCadaDias": 5
+    },
+    {
+      "id": "8",
+      "nombre": "Romero",
+      "tipo": "aromática",
+      "ubicacion": "terraza",
+      "fechaSiembra": "2025-10-10",
+      "ultimoRiego": "2026-11-12",
+      "riegoCadaDias": 14,
+      "notas": "Aguanta bien la sequía; no regar en exceso."
+    }
+  ]
+}

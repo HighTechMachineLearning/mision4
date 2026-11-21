@@ -1,8 +1,7 @@
 import { z } from "zod";
-import { objetoApiSchema, plantaSchema } from "../schemas/planta";
-import { leerIds } from "../storage/idsPlantas";
+import { plantaSchema } from "../schemas/planta";
 
-const BASE = "https://api.restful-api.dev/objects";
+const BASE = "http://localhost:3000/plantas";
 
 export class ErrorApi extends Error {
     constructor(mensaje, status) {
@@ -27,29 +26,21 @@ const pedir = async (url, opciones) => {
 };
 
 const leerPlanta = (objeto) => {
-    const sobre = objetoApiSchema.safeParse(objeto);
-    if (!sobre.success) return null;
-    const { id, name, data } = sobre.data;
-    const planta = plantaSchema.safeParse({ ...data, nombre: name });
+    const { id, ...datos } = objeto ?? {};
+    if (typeof id !== "string") return null;
+    const planta = plantaSchema.safeParse(datos);
     return planta.success ? { id, ...planta.data } : null;
 };
 
-export const crearPlanta = async ({ nombre, ...datos }) => {
-    const creado = await pedir(BASE, {
+export const crearPlanta = (valores) =>
+    pedir(BASE, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: nombre, data: datos }),
+        body: JSON.stringify(valores),
     });
-    return objetoApiSchema.parse(creado).id;
-};
 
 export const obtenerPlantas = async () => {
-    const ids = leerIds();
-    if (ids.length === 0) return { plantas: [], ilegibles: 0 };
-
-    const consulta = ids.map((id) => `id=${encodeURIComponent(id)}`).join("&");
-    const objetos = z.array(z.unknown()).parse(await pedir(`${BASE}?${consulta}`));
-
+    const objetos = z.array(z.unknown()).parse(await pedir(BASE));
     const plantas = objetos.map(leerPlanta).filter(Boolean);
     return { plantas, ilegibles: objetos.length - plantas.length };
 };
