@@ -1,0 +1,210 @@
+:root {
+    --fondo: #f3f7f2;
+    --superficie: #ffffff;
+    --borde: #cfdcd3;
+    --texto: #1c2b23;
+    --texto-suave: #4b5f54;
+    --verde: #2d6a4f;
+    --verde-oscuro: #1f4d38;
+    --verde-hover: #245a42;
+    --verde-claro: #e3efe6;
+    --error: #b3261e;
+    --error-fondo: #fdecea;
+    --aviso: #8a4b00;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: light;
+}
+
+body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+}
+
+/* Estructura */
+
+header {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 2rem 1rem 1rem;
+}
+
+main {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 0 1rem 2rem;
+}
+
+main>section {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+h1 {
+    margin: 0;
+    color: var(--verde);
+    font-size: 2.25rem;
+    letter-spacing: -0.02em;
+}
+
+header p {
+    margin: 0.25rem 0 0;
+    color: var(--texto-suave);
+}
+
+h2 {
+    margin: 0 0 1rem;
+    color: var(--verde-oscuro);
+    font-size: 1.25rem;
+}
+
+h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.05rem;
+}
+
+/* Formulario */
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.5rem 0.65rem;
+    background: var(--superficie);
+    color: inherit;
+    border: 1px solid #9db5a5;
+    border-radius: 6px;
+    font: inherit;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border-color: var(--error);
+}
+
+.campo [role="alert"] {
+    margin: 0.35rem 0 0;
+    color: var(--error);
+    font-size: 0.875rem;
+}
+
+button {
+    padding: 0.6rem 1.1rem;
+    background: var(--verde);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+    background: var(--verde-hover);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+form button {
+    width: 100%;
+}
+
+:focus-visible {
+    outline: 3px solid var(--verde);
+    outline-offset: 2px;
+}
+
+/* Mensajes de estado */
+
+form>[role="status"]:not(:empty) {
+    margin: 1rem 0 0;
+    padding: 0.6rem 0.8rem;
+    background: var(--verde-claro);
+    color: var(--verde-oscuro);
+    border-radius: 6px;
+}
+
+form>[role="alert"],
+section>[role="alert"] {
+    margin: 1rem 0 0;
+    padding: 0.6rem 0.8rem;
+    background: var(--error-fondo);
+    color: var(--error);
+    border-radius: 6px;
+}
+
+section>[role="alert"] p {
+    margin: 0 0 0.75rem;
+}
+
+section>[role="status"] {
+    margin: 0 0 1rem;
+    color: var(--texto-suave);
+}
+
+/* Listado */
+
+ul {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+article {
+    padding: 0.75rem 1rem;
+    background: var(--fondo);
+    border: 1px solid var(--borde);
+    border-left: 4px solid var(--verde);
+    border-radius: 8px;
+}
+
+article p {
+    margin: 0;
+}
+
+article h3+p {
+    color: var(--texto-suave);
+    text-transform: capitalize;
+}
+
+article time {
+    font-weight: 600;
+}
+
+article strong {
+    color: var(--aviso);
+}

@@ -1,3 +1,4 @@
+import './App.css'
 import FormularioPlanta from './components/FormularioPlanta.jsx'
 import ListaPlantas from './components/ListaPlantas.jsx'
 
