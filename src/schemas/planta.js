@@ -39,6 +39,5 @@ export const plantaSchema = z
 export const objetoApiSchema = z.object({
     id: z.string(),
     name: z.string(),
-    createdAt: z.number(),
     data: z.unknown(),
 });
