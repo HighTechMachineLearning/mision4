@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { plantaSchema, TIPOS, UBICACIONES } from "../schemas/planta";
+import { plantaSchema, TIPOS, UBICACIONES, NOMBRE_MAX, RIEGO_MIN, RIEGO_MAX } from "../schemas/planta";
 import { useCrearPlanta } from "../hooks/usePlantas";
 import CampoFormulario from "./CampoFormulario";
 
@@ -12,6 +12,12 @@ const valoresIniciales = {
     ultimoRiego: "",
     riegoCadaDias: "",
     notas: "",
+};
+
+const soloDigitos = (evento) => {
+    const esCaracter = evento.key.length === 1;
+    const esAtajo = evento.ctrlKey || evento.metaKey;
+    if (esCaracter && !esAtajo && !/\d/.test(evento.key)) evento.preventDefault();
 };
 
 export default function FormularioPlanta() {
@@ -39,6 +45,7 @@ export default function FormularioPlanta() {
                     registro={register("nombre")}
                     error={errors.nombre}
                     type="text"
+                    maxLength={NOMBRE_MAX}
                 />
                 <CampoFormulario
                     etiqueta="Tipo"
@@ -71,6 +78,10 @@ export default function FormularioPlanta() {
                     registro={register("riegoCadaDias", { valueAsNumber: true })}
                     error={errors.riegoCadaDias}
                     type="number"
+                    min={RIEGO_MIN}
+                    max={RIEGO_MAX}
+                    step={1}
+                    onKeyDown={soloDigitos}
                 />
                 <CampoFormulario
                     etiqueta="Notas (opcional)"

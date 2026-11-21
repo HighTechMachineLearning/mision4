@@ -1,3 +1,5 @@
+const capitalizar = (texto) => texto.charAt(0).toUpperCase() + texto.slice(1);
+
 export default function CampoFormulario({
     etiqueta,
     registro,
@@ -25,7 +27,7 @@ export default function CampoFormulario({
                     <option value="">Elige una opción</option>
                     {opciones.map((opcion) => (
                         <option key={opcion} value={opcion}>
-                            {opcion}
+                            {capitalizar(opcion)}
                         </option>
                     ))}
                 </select>

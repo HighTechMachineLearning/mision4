@@ -3,6 +3,9 @@ import { hoyISO } from "../utils/fechas";
 
 export const TIPOS = ["hortaliza", "aromática", "flor", "frutal"];
 export const UBICACIONES = ["terraza", "balcón", "huerto", "interior"];
+export const NOMBRE_MAX = 40;
+export const RIEGO_MIN = 1;
+export const RIEGO_MAX = 30;
 
 const fechaNoFutura = () =>
     z
@@ -14,8 +17,8 @@ export const plantaSchema = z
         nombre: z
             .string()
             .trim()
-            .min(2, { error: "El nombre debe tener entre 2 y 40 caracteres" })
-            .max(40, { error: "El nombre debe tener entre 2 y 40 caracteres" }),
+            .min(2, { error: `El nombre debe tener entre 2 y ${NOMBRE_MAX} caracteres` })
+            .max(NOMBRE_MAX, { error: `El nombre debe tener entre 2 y ${NOMBRE_MAX} caracteres` }),
         tipo: z.enum(TIPOS, { error: "Elige un tipo" }),
         ubicacion: z.enum(UBICACIONES, { error: "Elige una ubicación" }),
         fechaSiembra: fechaNoFutura(),
@@ -23,8 +26,8 @@ export const plantaSchema = z
         riegoCadaDias: z
             .number({ error: "Indica un número de días" })
             .int({ error: "Debe ser un número entero" })
-            .min(1, { error: "Mínimo 1 día" })
-            .max(30, { error: "Máximo 30 días" }),
+            .min(RIEGO_MIN, { error: `Mínimo ${RIEGO_MIN} día` })
+            .max(RIEGO_MAX, { error: `Máximo ${RIEGO_MAX} días` }),
         notas: z.string().trim().max(200, { error: "Máximo 200 caracteres" }).optional(),
     })
     .refine((planta) => planta.ultimoRiego >= planta.fechaSiembra, {
